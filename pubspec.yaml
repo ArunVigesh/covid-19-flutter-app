@@ -25,7 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   http: ^0.12.1
   connectivity: ^0.4.8+2
-  draggable_scrollbar: ^0.0.4
+
 
 dev_dependencies:
   flutter_test:

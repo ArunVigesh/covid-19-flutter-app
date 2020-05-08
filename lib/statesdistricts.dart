@@ -120,7 +120,7 @@ class _StatesState extends State<States> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
               margin: EdgeInsets.symmetric(horizontal: 32.0),
-              color: Colors.blue[100],
+              color: Colors.orangeAccent[700],
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -299,7 +299,7 @@ class _DistrictsState extends State<Districts> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
               margin: EdgeInsets.symmetric(horizontal: 16.0),
-              color: Colors.blue[100],
+              color: Colors.teal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

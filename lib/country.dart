@@ -40,7 +40,7 @@ class _CountryState extends State<Country> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
               margin: EdgeInsets.symmetric(horizontal: 48.0),
-              color: Colors.blue[100],
+              color: Colors.deepOrange[400],
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
