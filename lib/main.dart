@@ -1,14 +1,15 @@
+import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'prediction.dart';
+
 import 'country.dart';
+import 'prediction.dart';
 import 'statesdistricts.dart';
-import 'package:connectivity/connectivity.dart';
 
 void main() => runApp(MaterialApp(home: MyApp()));
 
@@ -54,34 +55,34 @@ class _BodyState extends State<Body> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0)),
-              title: Text(
-                "NO Internet",
-                style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0)),
+          title: Text(
+            "NO Internet",
+            style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
+          ),
+          content: Text(
+            "Turn ON Wifi or Mobile Data",
+            style: TextStyle(
+              fontSize: 16.0,
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                "Refresh",
+                style: TextStyle(fontSize: 16.0),
               ),
-              content: Text(
-                "Turn ON Wifi or Mobile Data",
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text(
-                    "Refresh",
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyApp(),
-                        ));
-                  },
-                )
-              ],
-            ));
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyApp(),
+                    ));
+              },
+            )
+          ],
+        ));
   }
 
   @override
@@ -355,13 +356,13 @@ class _BodyState extends State<Body> {
             SizedBox(
               height: 32.0,
             ),
-            Text("Crafted with ♡ by \nArun Vigesh & Manoj Kumar",
+            Text("Crafted with ♡ by \nArun Vigesh & Manojkumar",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Alegreya',
                   fontSize: 12.0,
-                  color: Colors.black54,
+                  color: Colors.black,
                 ))
           ],
         ),
