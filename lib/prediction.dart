@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 
 class Prediction extends StatefulWidget {
@@ -21,19 +22,19 @@ class _PredictionState extends State<Prediction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Our PREDICTIONS'),
+        title: Text('Our Predictions'),
         backgroundColor: Colors.teal,
       ),
       body: Container(
           child: Column(
-            children: <Widget>[
-              Padding(
-                padding:
+        children: <Widget>[
+          Padding(
+            padding:
                 const EdgeInsets.symmetric(horizontal: 90.0, vertical: 16.0),
                 child: Image(
                   fit: BoxFit.contain,
                   image: AssetImage('images/pred.png'),
-                  height: 150,
+                  height: 100,
                   width: double.infinity,
                 ),
               ),
@@ -65,7 +66,8 @@ class _PredictionState extends State<Prediction> {
                 height: 16.0,
               ),
               Text(
-                "ETA = 1 Minute... Don't Leave this Page",
+                "ETA = 1 Minute... Don't Leave this Page\nCould be Values @ `End of the Day`",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,

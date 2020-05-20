@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -352,8 +353,16 @@ class _BodyState extends State<Body> {
               },
             ),
             SizedBox(
-              height: 16.0,
-            )
+              height: 32.0,
+            ),
+            Text("Crafted with ♡ by \nArun Vigesh & Manoj Kumar",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontFamily: 'Alegreya',
+                  fontSize: 12.0,
+                  color: Colors.black54,
+                ))
           ],
         ),
       ),
