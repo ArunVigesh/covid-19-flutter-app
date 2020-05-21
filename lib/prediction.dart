@@ -12,7 +12,6 @@ class Prediction extends StatefulWidget {
 
 class _PredictionState extends State<Prediction> {
   List<dynamic> _data = [];
-  List<dynamic> _dataCountry = [];
 
   @override
   void initState() {
@@ -130,18 +129,11 @@ class _PredictionState extends State<Prediction> {
                                     "Predicted : " +
                                         _data[index]['Value']
                                             .round()
-                                            .toString() +
-                                        "\n\t\t Count at " +
-                                        DateFormat('hh:mm a').format(
-                                            DateTime.fromMillisecondsSinceEpoch(
-                                                _dataCountry[index]
-                                                    ['updated'])) +
-                                        " : " +
-                                        _dataCountry[index]['cases'].toString(),
+                                            .toString(),
                                     style: TextStyle(
                                         fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.blueAccent),
+                                        color: Colors.blue),
                                   ),
                                 ),
                               ),
@@ -158,13 +150,10 @@ class _PredictionState extends State<Prediction> {
 
   void _fetchData() async {
     var url = 'http://34.196.183.102/';
-    var urlCountry = 'https://corona.lmao.ninja/v2/countries?today=&sort=';
     var response = await http.get(url);
-    var responseCountry = await http.get(urlCountry);
-    if (response.statusCode == 200 && responseCountry.statusCode == 200) {
+    if (response.statusCode == 200) {
       setState(() {
         _data = jsonDecode(response.body);
-        _dataCountry = jsonDecode(responseCountry.body);
       });
     } else {
       print('Request failed with status: ${response.statusCode}.');
