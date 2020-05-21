@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'country.dart';
 import 'prediction.dart';
 import 'statesdistricts.dart';
+import 'menu.dart';
 
 void main() => runApp(MaterialApp(home: MyApp()));
 
@@ -55,34 +57,34 @@ class _BodyState extends State<Body> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0)),
-          title: Text(
-            "NO Internet",
-            style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
-          ),
-          content: Text(
-            "Turn ON Wifi or Mobile Data",
-            style: TextStyle(
-              fontSize: 16.0,
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text(
-                "Refresh",
-                style: TextStyle(fontSize: 16.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0)),
+              title: Text(
+                "NO Internet",
+                style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
               ),
-              onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MyApp(),
-                    ));
-              },
-            )
-          ],
-        ));
+              content: Text(
+                "Turn ON Wifi or Mobile Data",
+                style: TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text(
+                    "Refresh",
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyApp(),
+                        ));
+                  },
+                )
+              ],
+            ));
   }
 
   @override
@@ -91,8 +93,29 @@ class _BodyState extends State<Body> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 5.0,
+                ),
+                child: FlatButton(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  child: Image(
+                    image: AssetImage('images/multimedia.png'),
+                    height: 32.0,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Menu()),
+                    );
+                  },
+                ),
+              ),
+            ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(bottom: 8.0),
               child: Image(
                 image: AssetImage('images/coronavirus.png'),
                 height: 200.0,

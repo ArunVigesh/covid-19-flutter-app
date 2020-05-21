@@ -10,7 +10,6 @@ class Country extends StatefulWidget {
 
 class _CountryState extends State<Country> {
   List<dynamic> _data = [];
-  List<String> _countryNames = [];
   @override
   void initState() {
     super.initState();
@@ -184,10 +183,6 @@ class _CountryState extends State<Country> {
       setState(() {
         _data = jsonDecode(response.body);
       });
-      _countryNames.clear();
-      for (int i = 0; i < _data.length; i++) {
-        _countryNames.add(_data[i]['country']);
-      }
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }

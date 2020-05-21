@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
@@ -11,6 +12,7 @@ class Prediction extends StatefulWidget {
 
 class _PredictionState extends State<Prediction> {
   List<dynamic> _data = [];
+  List<dynamic> _dataCountry = [];
 
   @override
   void initState() {
@@ -45,7 +47,7 @@ class _PredictionState extends State<Prediction> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0)),
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Predict Now ... ?",
                 style: TextStyle(
@@ -86,7 +88,7 @@ class _PredictionState extends State<Prediction> {
                   padding: const EdgeInsets.all(8.0),
                   child: Image(
                     image: AssetImage('images/located.png'),
-                    height: 48.0,
+                    height: 32.0,
                   ),
                 ),
                 Padding(
@@ -95,7 +97,7 @@ class _PredictionState extends State<Prediction> {
                     "All Country",
                     style: TextStyle(
                       fontFamily: 'Orbitron',
-                      fontSize: 32.0,
+                      fontSize: 24.0,
                     ),
                   ),
                 )
@@ -118,7 +120,7 @@ class _PredictionState extends State<Prediction> {
                                 title: Text(
                                   _data[index]['Country'],
                                   style: TextStyle(
-                                      fontSize: 24.0,
+                                      fontSize: 20.0,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Alegreya'),
                                 ),
@@ -128,11 +130,18 @@ class _PredictionState extends State<Prediction> {
                                     "Predicted : " +
                                         _data[index]['Value']
                                             .round()
-                                            .toString(),
+                                            .toString() +
+                                        "\n\t\t Count at " +
+                                        DateFormat('hh:mm a').format(
+                                            DateTime.fromMillisecondsSinceEpoch(
+                                                _dataCountry[index]
+                                                    ['updated'])) +
+                                        " : " +
+                                        _dataCountry[index]['cases'].toString(),
                                     style: TextStyle(
                                         fontSize: 16.0,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.blue),
+                                        color: Colors.blueAccent),
                                   ),
                                 ),
                               ),
@@ -149,10 +158,13 @@ class _PredictionState extends State<Prediction> {
 
   void _fetchData() async {
     var url = 'http://34.196.183.102/';
+    var urlCountry = 'https://corona.lmao.ninja/v2/countries?today=&sort=';
     var response = await http.get(url);
-    if (response.statusCode == 200) {
+    var responseCountry = await http.get(urlCountry);
+    if (response.statusCode == 200 && responseCountry.statusCode == 200) {
       setState(() {
         _data = jsonDecode(response.body);
+        _dataCountry = jsonDecode(responseCountry.body);
       });
     } else {
       print('Request failed with status: ${response.statusCode}.');
