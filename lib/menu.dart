@@ -13,7 +13,7 @@ class _MenuState extends State<Menu> {
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-          colors: [Colors.white, Colors.grey],
+          colors: [Colors.white, Colors.blue[100]],
           begin: const FractionalOffset(0.5, 0.0),
           end: const FractionalOffset(0.0, 0.5),
           stops: [0.0, 1.0],
